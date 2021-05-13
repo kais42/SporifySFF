@@ -1,0 +1,81 @@
+{% extends 'layout/admin/index.html.twig' %}
+
+{% block title %}
+<title>Product - Admin</title>
+{% endblock %}
+
+{% block subtitle %}
+<a class="navbar-brand" href="javascript:;">Orders</a>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> Orders</h4>
+        </div>
+        <div class="card-body">
+          <form action="{{ path('admin_order_search') }}" method="POST">
+            <div class="row">
+              <div class="col-lg-4 col-md-12">
+                <div class="form-group">
+                  <label for="id">Order Id</label>
+                  {% if (filter is defined) and ('id' in filter|keys) %}
+                  <input type="text" id="id" class="form-control" placeholder="Search id" name="id" value="{{ filter.id }}">
+                  {% else %}
+                  <input type="text" id="id" class="form-control" placeholder="Search id" name="id">
+                  {% endif %}
+                </div>
+              </div>
+              <div class="mb-3 col-md-12">
+                <button type="submit" class="btn btn-primary btn-round text-white">Search</button>
+              </div>
+            </div>
+          </form>
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                <th>
+                  Id
+                </th>
+                <th>
+                  Shipping Address
+                </th>
+                <th>
+                  Total Price
+                </th>
+                <th>
+                  Total Number
+                </th>
+                <th>
+                  Delivery Date
+                </th>
+                <th>
+                  Action
+                </th>
+              </thead>
+              <tbody>
+                {% for order in orders %}
+                <tr>
+                  <td>{{ order.getId }}</td>
+                  <td>{{ order.user.getAddress }}</td>
+                  <td>$ {{ order.total_price }}</td>
+                  <td>{{ order.total_number }}</td>
+                  <td>{{ order.str_date }}</td>
+                  <td>
+                    <a href="{{ path('admin_order_detail', {'id': order.getId}) }}" class="mr-3" title="Detail"><i class="fa fa-eye"></i></a>
+                    <a href="{{ path('admin_order_delete', {'id': order.getId}) }}" class="" title="Delete"><i class="fa fa-trash" style="color: red;"></i></a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

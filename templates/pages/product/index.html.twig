@@ -1,0 +1,193 @@
+{% extends 'layout/index.html.twig' %}
+
+{% block title %}
+<title>Product - All</title>
+{% endblock %}
+
+{% block body %}
+<section class="section breadcrumb-section" style="background-image: url(images/image-10-1920x232.jpg)">
+  <div class="container">
+    <h2 class="breadcrumb-section-title">Products</h2>
+    <!-- Breadcrumb-->
+    <div class="breadcrumb">
+      <div class="breadcrumb-inner">
+        <div class="breadcrumb-item"><a class="breadcrumb-link" href="#">Home</a></div>
+        <div class="breadcrumb-item"><a class="breadcrumb-link" href="{{ path('product') }}">Product</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Product-->
+<section class="section-md bg-transparent">
+  <div class="container">
+    <div class="row row-40 flex-md-row-reverse">
+      <div class="col-md-8">
+        <div class="group-15 d-flex flex-wrap justify-content-between align-items-center">
+          <div>
+            <h3>Product</h3>
+          </div>
+          <div>
+          </div>
+        </div>
+        <div class="row row-30 row-lg-45 row-content">
+          {% for product in products %}
+          <div class="col-sm-6">
+            <!-- Product-->
+            <div class="product product-simple">
+              <div class="product-media"><img class="product-img" src="{{ asset(product.getImage) }}" alt="" width="252" height="255"/>
+                <div class="product-btns">
+                  <a class="product-btn mdi-cart" href="{{ path('cart_add', {'id': product.getId}) }}"></a>
+                  <a class="product-btn product-btn-tertiary mdi-magnify" href="{{ path('product_detail', {'id': product.getId}) }}"></a>
+                </div>
+              </div>
+              <div class="product-title h4">
+                <a href="{{ path('product_detail', {'id': product.getId}) }}">{{ product.getName }}</a>
+              </div>
+              <div class="product-price">${{ product.getPrice }}</div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="widget">
+          <h3 class="widget-title title-2">Types</h3>
+          <div class="widget-body">
+            <div class="widget-list">
+              <a class="widget-list-link link link-dark" href="{{ path('product') }}">
+                <span>All Products</span><span>{{ products|length }}</span>
+              </a>
+              {% for type in types %}
+              <a class="widget-list-link link link-dark" href="{{ path('product_filter_by_type', {'type': type.name}) }}">
+                <span>{{type.name}}</span><span>{{type.product_count}}</span>
+              </a>
+              {% endfor %}
+          </div>
+        </div>
+        <form action="{{ path('product_search') }}" method="POST">
+          <div class="widget">
+            <h3 class="widget-title title-2">Filter by price</h3>
+            <div class="widget-body widget-body-bordered">
+              <!-- RD Range-->
+              {% if (max_price is defined) and (min_price is defined) %}
+              <div class="rd-range" data-min="0" data-max="999" data-min-diff="10" data-start="[{{min_price}}, {{max_price}}]" data-step="1" data-input=".rd-range-input-value-1" data-input-2=".rd-range-input-value-2"></div>
+              {% else %}
+              <div class="rd-range" data-min="0" data-max="999" data-min-diff="10" data-start="[0, 999]" data-step="1" data-input=".rd-range-input-value-1" data-input-2=".rd-range-input-value-2"></div>
+              {% endif %}
+              <div class="rd-range-meta">
+                <div class="rd-range-value">
+                  <div class="rd-range-form-wrap">
+                    <div class="rd-range-label">Price:</div>
+                  </div>
+                  <div class="rd-range-form-wrap"><span>$</span>
+                    {% if min_price is defined %}
+                    <input class="rd-range-input rd-range-input-value-1 rd-range-input-2-symbol" type="text" name="min_price" size="1" value="{{min_price}}">
+                    {% else %}
+                    <input class="rd-range-input rd-range-input-value-1 rd-range-input-2-symbol" type="text" name="min_price" size="1">
+                    {% endif %}
+                  </div>
+                  <div class="rd-range-form-wrap"><span class="mx-1"> - </span></div>
+                  <div class="rd-range-form-wrap"><span>$</span>
+                    {% if max_price is defined %}
+                    <input class="rd-range-input rd-range-input-value-2" type="text" name="max_price" size="1" value="{{ max_price }}">
+                    {% else %}
+                    <input class="rd-range-input rd-range-input-value-2" type="text" name="max_price" size="1">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="widget">
+            <h3 class="widget-title title-2">Sizes</h3>
+            <div class="widget-body widget-body-bordered">
+              <div class="group-20x15 d-flex flex-wrap">
+                <div>
+                  <div class="custom-control custom-radio">
+                    <input class="custom-control-input" type="radio" id="all" value="0" name="size" checked>
+                    <label class="custom-control-label" for="all">See All
+                    </label>
+                  </div>
+                </div>
+                <div>
+                  <div class="custom-control custom-radio">
+                    {% if (filter is defined) and ('size' in filter|keys) and filter.size == 'l' %}
+                    <input class="custom-control-input" type="radio" id="l" value="l" name="size" checked>
+                    {% else %}
+                    <input class="custom-control-input" type="radio" id="l" value="l" name="size">
+                    {% endif %}
+                    <label class="custom-control-label" for="l">Large
+                    </label>
+                  </div>
+                </div>
+                <div>
+                  <div class="custom-control custom-radio">
+                    {% if (filter is defined) and ('size' in filter|keys) and filter.size == 'm' %}
+                    <input class="custom-control-input" type="radio" id="m" value="m" name="size" checked>
+                    {% else %}
+                    <input class="custom-control-input" type="radio" id="m" value="m" name="size">
+                    {% endif %}
+                    <label class="custom-control-label" for="m">Medium
+                    </label>
+                  </div>
+                </div>
+                <div>
+                  <div class="custom-control custom-radio">
+                    {% if (filter is defined) and ('size' in filter|keys) and filter.size == 's' %}
+                    <input class="custom-control-input" type="radio" id="s" value="s" name="size" checked>
+                    {% else %}
+                    <input class="custom-control-input" type="radio" id="s" value="s" name="size">
+                    {% endif %}
+                    <label class="custom-control-label" for="s">Small
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="widget">
+            <h3 class="widget-title title-2">Colors</h3>
+            <div class="widget-body widget-body-bordered">
+              <div class="group-15 d-flex flex-wrap">
+                <div class="checkbox-color">
+                  <input class="checkbox-color-input" type="radio" name="color" id="all-color" value="0" checked>
+                  <label class="checkbox-color-label" style="background-color: white" for="all-color">All</label>
+                </div>
+                {% for color in colors %}
+                <div class="checkbox-color">
+                  {% if (filter is defined) and ('color' in filter|keys) and (filter.color == color.name) %}
+                  <input class="checkbox-color-input" type="radio" name="color" id="{{ color.name }}" value="{{ color.name }}" checked>
+                  {% else %}
+                  <input class="checkbox-color-input" type="radio" name="color" id="{{ color.name }}" value="{{ color.name }}">
+                  {% endif %}
+                  <label class="checkbox-color-label" style="background-color: {{ color.value }}" for="{{ color.name }}"></label>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            <button type="submit" class="btn btn-sm btn-outline float-right">filter</button>
+          </div>
+        </form>
+        <div class="widget pt-5">
+          <h3 class="widget-title title-2">Popular products</h3>
+          <div class="widget-body">
+            {% for product in products %}
+            <!-- Product-->
+            <!-- <div class="product product-small-rating">
+              <div class="product-media"><img class="product-img" src="{{product.getImage}}" alt="" width="52" height="52"/>
+              </div>
+              <div class="product-body">
+                <div class="product-title h4"><a href="{{ path('product_detail', {'id': product.getId}) }}"><span>{{ product.getName }}</span></a></div>
+                <div class="product-rating"><span class="product-rating-item mdi-star"></span><span class="product-rating-item mdi-star"></span><span class="product-rating-item mdi-star"></span><span class="product-rating-item mdi-star"></span><span class="product-rating-item mdi-star-half"></span>
+                </div>
+                <div class="product-price">${{ product.getPrice }}</div>
+              </div>
+            </div> -->
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

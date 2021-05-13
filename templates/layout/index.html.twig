@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {% block title %}{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta property="og:title" content="Template Monster Admin Template">
+  <meta property="og:description" content="brevis, barbatus clabulares aliquando convertam de dexter, peritus capio. devatio clemens habitio est.">
+  <meta property="og:image" content="http://digipunk.netii.net/images/radar.gif">
+  <meta property="og:url" content="http://digipunk.netii.net">
+  <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
+  <link rel="stylesheet" href="{{ asset('components/base/base.css') }}">
+
+  <!-- CSS Files -->
+  <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" />
+  <link href="{{ asset('assets/css/paper-dashboard.css?v=2.0.1') }}" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="{{ asset('assets/demo/demo.css') }}" rel="stylesheet" />
+  {% block stylesheets %}{% endblock %}
+
+  <script src="{{ asset('components/base/core.min.js') }}"></script>
+  <script src="{{ asset('components/base/script.js') }}"></script>
+</head>
+
+<body>
+	<div class="page">
+    {{ include('layout/header.html.twig') }}
+    {% block body %}{% endblock %}
+    {{ include('layout/footer.html.twig') }}
+	</div>
+  <!-- Preloader-->
+  <div class="preloader">
+    <div class="preloader-inner">
+      <svg class="preloader-svg" width="200" height="200" viewbox="0 0 100 100">
+        <polyline class="line-cornered stroke-still" points="0,0 100,0 100,100" stroke-width="10" fill="none"></polyline>
+        <polyline class="line-cornered stroke-still" points="0,0 0,100 100,100" stroke-width="10" fill="none"></polyline>
+        <polyline class="line-cornered stroke-animation" points="0,0 100,0 100,100" stroke-width="10" fill="none"></polyline>
+        <polyline class="line-cornered stroke-animation" points="0,0 0,100 100,100" stroke-width="10" fill="none"></polyline>
+      </svg>
+    </div>
+  </div>
+  <!--   Core JS Files   -->
+  <script src="{{ asset('assets/js/core/jquery.min.js') }}"></script>
+  <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
+  <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('assets/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
+  
+  {% block javascripts %}{% endblock %}
+</body>
+</html>

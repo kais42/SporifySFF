@@ -1,0 +1,182 @@
+{% extends 'layout/admin/index.html.twig' %}
+
+{% block title %}
+<title>Product - Admin</title>
+{% endblock %}
+
+{% block subtitle %}
+<a class="navbar-brand" href="javascript:;">Products</a>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> Edit Product</h4>
+        </div>
+        <div class="card-body">
+          <form action="{{ path('admin_product_update', {'id': product.getId}) }}" method="POST" enctype="multipart/form-data">
+            <div class="row">
+              <div class="col-lg-6 offset-lg-3 col-md-12">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  {% if (old is defined) and ('name' in old|keys) %}
+                  <input type="text" class="form-control" name="name" id="name" value="{{ old.name }}">
+                  {% else %}
+                  <input type="text" class="form-control" name="name" id="name" value="{{ product.getName }}">
+                  {% endif %}
+                  {% if (errors is defined) and ('name' in errors|keys) %}
+                  <span style="color: red;">{{ errors.name }}</span>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="col-lg-6 offset-lg-3 col-md-12">
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  {% if (old is defined) and ('description' in old|keys) %}
+                  <textarea class="form-control textarea" name="description">{{old.description}}</textarea>
+                  {% else %}
+                  <textarea class="form-control textarea" name="description">{{product.getDescription}}</textarea>
+                  {% endif %}
+                  {% if (errors is defined) and ('description' in errors|keys) %}
+                  <span style="color: red;">{{ errors.description }}</span>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="col-lg-6 offset-lg-3 col-md-12">
+                <div class="form-group">
+                  <label for="quantity">Quantity</label>
+                  {% if (old is defined) and ('quantity' in old|keys) %}
+                  <input type="number" class="form-control" name="quantity" id="quantity" value="{{ old.quantity }}">
+                  {% else %}
+                  <input type="number" class="form-control" name="quantity" id="quantity" value="{{ product.getQuantity }}">
+                  {% endif %}
+                  {% if (errors is defined) and ('quantity' in errors|keys) %}
+                  <span style="color: red;">{{ errors.quantity }}</span>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="col-lg-6 offset-lg-3 col-md-12">
+                <div class="form-group">
+                  <label for="price">Price</label>
+                  {% if (old is defined) and ('price' in old|keys) %}
+                  <input type="number" class="form-control" name="price" id="price" value="{{ old.price }}">
+                  {% else %}
+                  <input type="number" class="form-control" name="price" id="price" value="{{ product.getPrice }}">
+                  {% endif %}
+                  {% if (errors is defined) and ('price' in errors|keys) %}
+                  <span style="color: red;">{{ errors.price }}</span>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="col-lg-6 offset-lg-3 col-md-12">
+                <div class="form-group">
+                  <label>Type</label>
+                  <select name="type" class="custom-select" id="type">
+                    {% for type in types %}
+                      {% if type == product.getType %}
+                        <option value="{{ type }}" selected>{{ type }}</option>
+                      {% else %}
+                      <option value="{{ type }}">{{ type }}</option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-6 offset-lg-3 col-md-12">
+                <div class="form-group">
+                  <label>Size</label>
+                  <select name="size" class="custom-select" id="size">
+                    {% for size in sizes %}
+                      {% if size == product.getSize %}
+                        <option value="{{ size }}" selected>{{ size }}</option>
+                      {% else %}
+                      <option value="{{ size }}">{{ size }}</option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-6 offset-lg-3 col-md-12">
+                <div class="form-group">
+                  <label>Color</label>
+                  <select name="color" class="custom-select" id="color">
+                    {% for color in colors %}
+                      {% if color.name == product.getColor %}
+                        <option value="{{ color.name }}" selected>{{ color.name }}</option>
+                      {% else %}
+                      <option value="{{ color.name }}">{{ color.name }}</option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-6 offset-lg-3 col-md-12">
+                <div class="form-group">
+                  <label for="supplier">Supplier</label>
+                  {% if (old is defined) and ('supplier' in old|keys) %}
+                  <input type="text" class="form-control" name="supplier" id="supplier" value="{{ old.supplier }}">
+                  {% else %}
+                  <input type="text" class="form-control" name="supplier" id="supplier" value="{{ product.getSupplier }}">
+                  {% endif %}
+                  {% if (errors is defined) and ('supplier' in errors|keys) %}
+                  <span style="color: red;">{{ errors.supplier }}</span>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="col-lg-6 offset-lg-3 col-md-12">
+                <div class="custom-file my-3">
+                  <input type="file" class="custom-file-input" id="image" name="image">
+                  <label class="custom-file-label" for="image">Choose file</label>
+                  {% if (errors is defined) and ('image' in errors|keys) %}
+                  <span style="color: red;">{{ errors.image }}</span>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="d-flex justify-content-center my-3">
+                <a class="btn btn-default btn-round text-white" href="{{ path('admin_product') }}">Cancel</a>
+                <button type="submit" class="btn btn-primary btn-round">Save</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+  // Add the following code if you want the name of the file appear on select
+  $(".custom-file-input").on("change", function() {
+    var fileName = $(this).val().split("\\").pop();
+    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+  });
+  if ($("#type option:selected").text() === 'Équipement' || $("#type option:selected").text() === 'Accessoires') {
+    $("#size").prop('disabled', 'disabled');
+    $("#color").prop('disabled', 'disabled');
+  }
+  else {
+    $("#size").prop('disabled', false);
+    $("#color").prop('disabled', false);
+  }
+  $(document).ready(function(){
+    $("#type").change(function(event){
+      console.log(event.target.value);
+      if (event.target.value === 'Équipement' || event.target.value === 'Accessoires') {
+        $("#size").prop('disabled', 'disabled');
+        $("#color").prop('disabled', 'disabled');
+      }
+      else {
+        $("#size").prop('disabled', false);
+        $("#color").prop('disabled', false);
+      }
+    });
+  });
+</script>
+{% endblock %}

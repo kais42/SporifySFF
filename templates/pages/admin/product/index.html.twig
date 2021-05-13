@@ -1,0 +1,145 @@
+{% extends 'layout/admin/index.html.twig' %}
+
+{% block title %}
+<title>Product - Admin</title>
+{% endblock %}
+
+{% block subtitle %}
+<a class="navbar-brand" href="javascript:;">Products</a>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> Products</h4>
+        </div>
+        <div class="card-body">
+          <form action="{{ path('admin_product_search') }}" method="POST">
+            <div class="row">
+              <div class="col-lg-4 col-md-12">
+                <div class="form-group">
+                  <label for="name">Type</label>
+                  <select class="custom-select rounded-0" name="type">
+                    <option value="0">All Types</option>
+                    {% for type in types %}
+                      {% if (filter is defined) and ('type' in filter|keys) and (filter.type == type) %}
+                      <option value="{{ type }}" selected>{{ type }}</option>
+                      {% else %}
+                      <option value="{{ type }}">{{ type }}</option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-12">
+                <div class="form-group">
+                  <label for="name">Size</label>
+                  <select class="custom-select rounded-0" name="size">
+                    <option value="0">All Sizes</option>
+                    {% for size in sizes %}
+                      {% if (filter is defined) and ('size' in filter|keys) and (filter.size == size) %}
+                      <option value="{{ size }}" selected>{{ size }}</option>
+                      {% else %}
+                      <option value="{{ size }}">{{ size }}</option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-12">
+                <div class="form-group">
+                  <label for="name">Color</label>
+                  <select class="custom-select rounded-0" name="color">
+                    <option value="0">All Colors</option>
+                    {% for color in colors %}
+                      {% if (filter is defined) and ('color' in filter|keys) and (filter.color == color.name) %}
+                      <option value="{{ color.name }}" selected>{{ color.name }}</option>
+                      {% else %}
+                      <option value="{{ color.name }}">{{ color.name }}</option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <div class="mb-3 col-md-12">
+                <button type="submit" class="btn btn-primary btn-round text-white">Search</button>
+              </div>
+            </div>
+          </form>
+          <div class="mb-3" style="float: right;">
+            <a class="btn btn-primary btn-round text-white" href="{{ path('admin_product_create') }}">Create Product</a>
+          </div>
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                <th>
+                  Id
+                </th>
+                <th>
+                  Name
+                </th>
+                <th>
+                  Image
+                </th>
+                <th>
+                  Size
+                </th>
+                <th>
+                  Color
+                </th>
+                <th>
+                  Type
+                </th>
+                <th>
+                  Quantity
+                </th>
+                <th>
+                  Price
+                </th>
+                <th>
+                  Supplier
+                </th>
+                <th>
+                  Action
+                </th>
+              </thead>
+              <tbody>
+                {% for product in products %}
+                <tr>
+                  <td>{{ product.getId }}</td>
+                  <td>{{ product.getName }}</td>
+                  <td><img src="{{ asset(product.getImage) }}" alt="Product Image" style="height: 50px;"></td>
+                  <td>{{ product.getSize }}</td>
+                  <td style="color: {{ product.ocolor.value }}">{{ product.ocolor.name }}</td>
+                  <td>{{ product.getType }}</td>
+                  <td>{{ product.getQuantity }}</td>
+                  <td>${{ product.getPrice }}</td>
+                  <td>{{ product.getSupplier }}</td>
+                  <td>
+                    <a href="{{ path('admin_product_edit', {'id': product.getId}) }}" class="mr-3" title="Edit"><i class="fa fa-edit"></i></a>
+                    <a href="{{ path('admin_product_delete', {'id': product.getId}) }}" class="" title="Delete"><i class="fa fa-trash" style="color: red;"></i></a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{% if less_products is defined %}
+  {% for item in less_products %}
+  <script>
+    demo.showNotification('top','right', 'Quantity of the product {{item.getName}} is less than 5');
+  </script>
+  {% endfor %}
+{% endif %}
+{% endblock %}
