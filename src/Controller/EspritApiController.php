@@ -76,7 +76,91 @@ class EspritApiController extends AbstractController
         }
         $json = json_encode($jsonContent);
         return new Response($json);
+
     }
+    /**
+     * @Route("/catss")
+     * @return Response
+     */
+    public function cart(): Response
+    {
+        $carts = $this->getDoctrine()->getRepository(Cart::class)->findAll();
+        foreach ($carts as $cart) {
+            $cart->product = $this->getDoctrine()->getRepository(Product::class)->find($cart->getProductId());
+        }
+
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($carts);
+
+        return new JsonResponse($formatted);
+
+
+    }
+
+
+    /**
+     * @Route("/allPromotions")
+     * @return Response
+     */
+    public function allPromotions()
+    {
+        $promotions = $this->getDoctrine()->getRepository(Promotion::class)->findAll();
+        $jsonContent = null;
+        $i = 0;
+        $product = new Product();
+        foreach ($promotions as $promotion) {
+            $jsonContent[$i]['pourcentage'] = $promotion->getPourcentage();
+            $i++;
+        }
+        $json = json_encode($jsonContent);
+        return new Response($json);
+    }
+    /**
+     * @Route("/product/detail/{id}")
+     * @return Response
+     */
+
+    public function Jsondetail($id)
+    {
+        $product = $this->getDoctrine()->getRepository(Product::class)->find($id);
+
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($product);
+
+        return new JsonResponse($formatted);
+
+    }
+
+    /**
+     * @Route("/checkoutJson")
+     * @return Response
+     */
+
+    public function checkoutJson (Request $request)
+    {
+
+        $doct = $this->getDoctrine()->getManager();
+        $carts = $doct->getRepository(Cart::class)->findAll();
+        $promotions = $this->getDoctrine()->getRepository(Promotion::class)->findAll();
+        $i = 0;
+        $cart = new Cart();
+        $promotion = new Promotion();
+        foreach ($carts as $cart) {
+            $jsonContent[$i]['id'] = $cart->getId();
+            $jsonContent[$i]['quantity'] = $cart->getQuantity() ;
+
+
+            $i++;
+        }
+        foreach ($promotions as $promotion) {
+            $jsonContent[$i]['pourcentage'] = $promotion->getPourcentage();
+            $i++;
+        }
+        $json = json_encode($jsonContent);
+        return new Response($json);
+
+    }
+
 
 
 }
