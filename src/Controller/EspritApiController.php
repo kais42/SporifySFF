@@ -123,10 +123,41 @@ class EspritApiController extends AbstractController
     public function Jsondetail($id)
     {
         $product = $this->getDoctrine()->getRepository(Product::class)->find($id);
+        $promotions = $this->getDoctrine()->getRepository(Promotion::class)->findAll();
         $serializer = new Serializer([new ObjectNormalizer()]);
         $formatted = $serializer->normalize($product);
 
         return new JsonResponse($formatted);
+
+    }
+
+    /**
+     * @Route("/checkoutJson")
+     * @return Response
+     */
+
+    public function checkoutJson (Request $request)
+    {
+
+        $doct = $this->getDoctrine()->getManager();
+        $carts = $doct->getRepository(Cart::class)->findAll();
+        $promotions = $this->getDoctrine()->getRepository(Promotion::class)->findAll();
+        $i = 0;
+        $cart = new Cart();
+        $promotion = new Promotion();
+        foreach ($carts as $cart) {
+            $jsonContent[$i]['id'] = $cart->getId();
+            $jsonContent[$i]['quantity'] = $cart->getQuantity() ;
+
+
+            $i++;
+        }
+        foreach ($promotions as $promotion) {
+        $jsonContent[$i]['pourcentage'] = $promotion->getPourcentage();
+            $i++;
+        }
+        $json = json_encode($jsonContent);
+        return new Response($json);
 
     }
 }

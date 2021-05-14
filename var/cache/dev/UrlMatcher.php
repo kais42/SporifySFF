@@ -26,6 +26,7 @@ return [
         '/espritApi/productss' => [[['_route' => 'app_espritapi_recupererproducts', '_controller' => 'App\\Controller\\EspritApiController::recupererProducts'], null, null, null, false, false, null]],
         '/espritApi/catss' => [[['_route' => 'app_espritapi_cart', '_controller' => 'App\\Controller\\EspritApiController::cart'], null, null, null, false, false, null]],
         '/espritApi/allPromotions' => [[['_route' => 'app_espritapi_allpromotions', '_controller' => 'App\\Controller\\EspritApiController::allPromotions'], null, null, null, false, false, null]],
+        '/espritApi/checkoutJson' => [[['_route' => 'app_espritapi_checkoutjson', '_controller' => 'App\\Controller\\EspritApiController::checkoutJson'], null, null, null, false, false, null]],
         '/admin/events' => [[['_route' => 'admin_events', '_controller' => 'App\\Controller\\EventController::eventList'], null, null, null, false, false, null]],
         '/admin/tri-event' => [[['_route' => 'tri_event', '_controller' => 'App\\Controller\\EventController::triEvent'], null, null, null, false, false, null]],
         '/admin/search' => [[['_route' => 'search', '_controller' => 'App\\Controller\\EventController::search'], null, null, null, false, false, null]],
