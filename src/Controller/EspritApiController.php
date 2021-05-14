@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Cart;
 use App\Entity\Event;
 use App\Entity\Product;
+use App\Entity\Promotion;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -70,6 +72,44 @@ class EspritApiController extends AbstractController
             $jsonContent[$i]['image'] = $product->getImage();
             $jsonContent[$i]['price'] = $product->getPrice();
 
+            $i++;
+        }
+        $json = json_encode($jsonContent);
+        return new Response($json);
+    }
+
+    /**
+     * @Route("/catss")
+     * @return Response
+     */
+    public function cart(): Response
+    {
+        $carts = $this->getDoctrine()->getRepository(Cart::class)->findAll();
+        foreach ($carts as $cart) {
+            $cart->product = $this->getDoctrine()->getRepository(Product::class)->find($cart->getProductId());
+        }
+
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($carts);
+
+        return new JsonResponse($formatted);
+
+
+    }
+
+
+    /**
+     * @Route("/allPromotions")
+     * @return Response
+     */
+    public function allPromotions()
+    {
+        $promotions = $this->getDoctrine()->getRepository(Promotion::class)->findAll();
+        $jsonContent = null;
+        $i = 0;
+        $product = new Product();
+        foreach ($promotions as $promotion) {
+            $jsonContent[$i]['pourcentage'] = $promotion->getPourcentage();
             $i++;
         }
         $json = json_encode($jsonContent);
