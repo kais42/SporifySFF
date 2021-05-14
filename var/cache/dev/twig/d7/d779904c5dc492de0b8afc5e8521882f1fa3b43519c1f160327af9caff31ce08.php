@@ -413,6 +413,6 @@ class __TwigTemplate_06ca4a1ea40f1ec0b84a4ab2b5c3f91e4a8e5a56f8805e73e72e7057b2f
         </div>
     {% endfor %}
 {% endblock %}
-", "@Debug/Profiler/dump.html.twig", "E:\\WorkSpace\\task\\web\\symfony\\Anas S\\integ1\\vendor\\symfony\\debug-bundle\\Resources\\views\\Profiler\\dump.html.twig");
+", "@Debug/Profiler/dump.html.twig", "C:\\xampp\\htdocs\\SporifySF\\vendor\\symfony\\debug-bundle\\Resources\\views\\Profiler\\dump.html.twig");
     }
 }

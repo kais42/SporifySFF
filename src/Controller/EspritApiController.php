@@ -75,4 +75,6 @@ class EspritApiController extends AbstractController
         $json = json_encode($jsonContent);
         return new Response($json);
     }
+
+
 }

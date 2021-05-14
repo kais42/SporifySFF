@@ -1704,6 +1704,6 @@ class __TwigTemplate_6262a162e9bda1551a4b0d76626079b5c9c79d5f977aaf9498b94095cad
     });
 
 /*]]>*/</script>
-", "@WebProfiler/Profiler/base_js.html.twig", "E:\\WorkSpace\\task\\web\\symfony\\Anas S\\integ1\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\base_js.html.twig");
+", "@WebProfiler/Profiler/base_js.html.twig", "C:\\xampp\\htdocs\\SporifySF\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\base_js.html.twig");
     }
 }

@@ -1175,6 +1175,6 @@ class __TwigTemplate_816950bd01041b1ca9610f8a9f3a5e84deada9d1b75066ad84ef9ab0ad2
         <span>{{ route|default(controller) }}</span>
     {%- endif %}
 {% endmacro %}
-", "@WebProfiler/Collector/request.html.twig", "E:\\WorkSpace\\task\\web\\symfony\\Anas S\\integ1\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\request.html.twig");
+", "@WebProfiler/Collector/request.html.twig", "C:\\xampp\\htdocs\\SporifySF\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\request.html.twig");
     }
 }

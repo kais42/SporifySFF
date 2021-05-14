@@ -1006,6 +1006,6 @@ class __TwigTemplate_67b54ed8a555f2fda777f1345b9b6e4c867677c982e483b14982da2ac99
         {% endif %}
     {% endfor %}
 {% endblock %}
-", "@Swiftmailer/Collector/swiftmailer.html.twig", "E:\\WorkSpace\\task\\web\\symfony\\Anas S\\integ1\\vendor\\symfony\\swiftmailer-bundle\\Resources\\views\\Collector\\swiftmailer.html.twig");
+", "@Swiftmailer/Collector/swiftmailer.html.twig", "C:\\xampp\\htdocs\\SporifySF\\vendor\\symfony\\swiftmailer-bundle\\Resources\\views\\Collector\\swiftmailer.html.twig");
     }
 }

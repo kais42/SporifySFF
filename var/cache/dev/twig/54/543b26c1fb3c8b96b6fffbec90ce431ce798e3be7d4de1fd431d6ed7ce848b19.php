@@ -1180,6 +1180,6 @@ div.sf-toolbar .sf-toolbar-block a:hover {
         display: none !important;
     }
 }
-", "@WebProfiler/Profiler/toolbar.css.twig", "E:\\WorkSpace\\task\\web\\symfony\\Anas S\\integ1\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\toolbar.css.twig");
+", "@WebProfiler/Profiler/toolbar.css.twig", "C:\\xampp\\htdocs\\SporifySF\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\toolbar.css.twig");
     }
 }

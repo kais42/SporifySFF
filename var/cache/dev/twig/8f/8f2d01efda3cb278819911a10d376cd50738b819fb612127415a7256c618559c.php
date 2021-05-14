@@ -434,6 +434,6 @@ class __TwigTemplate_0eeb60e83cc4fae6125da06a99b5eab63ba6de4f60b2d8908a6a6ac5d03
         {% endif %}
     </div>
 {% endblock %}
-", "@WebProfiler/Collector/http_client.html.twig", "E:\\WorkSpace\\task\\web\\symfony\\Anas S\\integ1\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\http_client.html.twig");
+", "@WebProfiler/Collector/http_client.html.twig", "C:\\xampp\\htdocs\\SporifySF\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\http_client.html.twig");
     }
 }

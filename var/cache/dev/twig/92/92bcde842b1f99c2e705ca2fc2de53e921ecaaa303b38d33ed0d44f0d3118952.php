@@ -1671,6 +1671,6 @@ class __TwigTemplate_2cff59f924ce1241f980d93798d7f1298ae1d3e2d4781a9dd83e760a0f7
         </tbody>
     </table>
 {% endmacro %}
-", "@Doctrine/Collector/db.html.twig", "E:\\WorkSpace\\task\\web\\symfony\\Anas S\\integ1\\vendor\\doctrine\\doctrine-bundle\\Resources\\views\\Collector\\db.html.twig");
+", "@Doctrine/Collector/db.html.twig", "C:\\xampp\\htdocs\\SporifySF\\vendor\\doctrine\\doctrine-bundle\\Resources\\views\\Collector\\db.html.twig");
     }
 }

@@ -764,6 +764,6 @@ class __TwigTemplate_ebd6b86a324388fe0886da5df3b934293e6b9b0219b03e6d86feb9fbddc
         </div>
     {% endfor %}
 {% endblock %}
-", "@WebProfiler/Collector/mailer.html.twig", "E:\\WorkSpace\\task\\web\\symfony\\Anas S\\integ1\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\mailer.html.twig");
+", "@WebProfiler/Collector/mailer.html.twig", "C:\\xampp\\htdocs\\SporifySF\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\mailer.html.twig");
     }
 }
