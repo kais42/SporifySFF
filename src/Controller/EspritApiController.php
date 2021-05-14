@@ -123,7 +123,7 @@ class EspritApiController extends AbstractController
     public function Jsondetail($id)
     {
         $product = $this->getDoctrine()->getRepository(Product::class)->find($id);
-        $promotions = $this->getDoctrine()->getRepository(Promotion::class)->findAll();
+       
         $serializer = new Serializer([new ObjectNormalizer()]);
         $formatted = $serializer->normalize($product);
 

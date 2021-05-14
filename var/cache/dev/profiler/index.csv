@@ -561,3 +561,7 @@ bea8b0,127.0.0.1,GET,http://127.0.0.1:8000/espritApi/checkoutJson,1620994471,,40
 fa86b5,127.0.0.1,GET,http://127.0.0.1:8000/espritApi//product/detail/1,1620994978,,404
 5dda3a,127.0.0.1,GET,http://127.0.0.1:8000/espritApi/product/detail/1,1620994983,,200
 44aba6,127.0.0.1,GET,http://127.0.0.1:8000/espritApi/checkoutJson,1620994989,,200
+037460,127.0.0.1,GET,http://127.0.0.1:8000/espritApi/checkoutJson,1620995908,,200
+533d50,127.0.0.1,GET,http://127.0.0.1:8000/espritApi//product/detail/1,1620995917,02c4cf,404
+02c4cf,127.0.0.1,GET,http://127.0.0.1:8000/espritApi//product/detail/1,1620995918,,404
+6543df,127.0.0.1,GET,http://127.0.0.1:8000/espritApi/product/detail/1,1620995923,,200
