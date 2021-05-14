@@ -115,4 +115,18 @@ class EspritApiController extends AbstractController
         $json = json_encode($jsonContent);
         return new Response($json);
     }
+    /**
+     * @Route("/product/detail/{id}")
+     * @return Response
+     */
+
+    public function Jsondetail($id)
+    {
+        $product = $this->getDoctrine()->getRepository(Product::class)->find($id);
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($product);
+
+        return new JsonResponse($formatted);
+
+    }
 }
