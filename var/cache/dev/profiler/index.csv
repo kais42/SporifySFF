@@ -600,3 +600,6 @@ fa86b5,127.0.0.1,GET,http://127.0.0.1:8000/espritApi//product/detail/1,162099497
 02c4cf,127.0.0.1,GET,http://127.0.0.1:8000/espritApi//product/detail/1,1620995918,,404
 6543df,127.0.0.1,GET,http://127.0.0.1:8000/espritApi/product/detail/1,1620995923,,200
 >>>>>>> 55744abfa7658b3b38850710e11eec8d2c809a1d
+bb32cc,127.0.0.1,GET,http://127.0.0.1:8000/espritApi/catss,1621023544,,200
+4158d4,127.0.0.1,GET,http://127.0.0.1:8000/espritApi/catss,1621023552,,200
+2fca01,127.0.0.1,GET,http://127.0.0.1:8000/espritApi/allPromotions,1621023582,,200
