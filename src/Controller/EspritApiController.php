@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Cart;
 use App\Entity\Event;
 use App\Entity\Product;
+use App\Entity\Promotion;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

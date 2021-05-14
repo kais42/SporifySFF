@@ -24,6 +24,9 @@ return [
         '/espritApi/allProduct' => [[['_route' => 'app_espritapi_allproduct', '_controller' => 'App\\Controller\\EspritApiController::allProduct'], null, ['GET' => 0], null, false, false, null]],
         '/espritApi/allEvent' => [[['_route' => 'app_espritapi_allevent', '_controller' => 'App\\Controller\\EspritApiController::allEvent'], null, ['GET' => 0], null, false, false, null]],
         '/espritApi/productss' => [[['_route' => 'app_espritapi_recupererproducts', '_controller' => 'App\\Controller\\EspritApiController::recupererProducts'], null, null, null, false, false, null]],
+        '/espritApi/catss' => [[['_route' => 'app_espritapi_cart', '_controller' => 'App\\Controller\\EspritApiController::cart'], null, null, null, false, false, null]],
+        '/espritApi/allPromotions' => [[['_route' => 'app_espritapi_allpromotions', '_controller' => 'App\\Controller\\EspritApiController::allPromotions'], null, null, null, false, false, null]],
+        '/espritApi/checkoutJson' => [[['_route' => 'app_espritapi_checkoutjson', '_controller' => 'App\\Controller\\EspritApiController::checkoutJson'], null, null, null, false, false, null]],
         '/admin/events' => [[['_route' => 'admin_events', '_controller' => 'App\\Controller\\EventController::eventList'], null, null, null, false, false, null]],
         '/admin/tri-event' => [[['_route' => 'tri_event', '_controller' => 'App\\Controller\\EventController::triEvent'], null, null, null, false, false, null]],
         '/admin/search' => [[['_route' => 'search', '_controller' => 'App\\Controller\\EventController::search'], null, null, null, false, false, null]],
@@ -124,13 +127,14 @@ return [
                         .'|delete/([^/]++)(*:789)'
                     .')'
                 .')'
+                .'|/espritApi/product/detail/([^/]++)(*:833)'
                 .'|/cart/(?'
-                    .'|add/([^/]++)(*:820)'
-                    .'|update/([^/]++)(*:843)'
+                    .'|add/([^/]++)(*:862)'
+                    .'|update/([^/]++)(*:885)'
                 .')'
                 .'|/product/(?'
-                    .'|detail/([^/]++)(*:879)'
-                    .'|filter/([^/]++)(*:902)'
+                    .'|detail/([^/]++)(*:921)'
+                    .'|filter/([^/]++)(*:944)'
                 .')'
             .')/?$}sD',
     ],
@@ -166,10 +170,11 @@ return [
         743 => [[['_route' => 'admin_product_edit', '_controller' => 'App\\Controller\\ProductController::admin_edit'], ['id'], null, null, false, true, null]],
         766 => [[['_route' => 'admin_product_update', '_controller' => 'App\\Controller\\ProductController::admin_update'], ['id'], null, null, false, true, null]],
         789 => [[['_route' => 'admin_product_delete', '_controller' => 'App\\Controller\\ProductController::admin_delete'], ['id'], null, null, false, true, null]],
-        820 => [[['_route' => 'cart_add', '_controller' => 'App\\Controller\\OrderController::cart_add'], ['id'], null, null, false, true, null]],
-        843 => [[['_route' => 'cart_update', '_controller' => 'App\\Controller\\OrderController::cart_update'], ['id'], null, null, false, true, null]],
-        879 => [[['_route' => 'product_detail', '_controller' => 'App\\Controller\\ProductController::detail'], ['id'], null, null, false, true, null]],
-        902 => [
+        833 => [[['_route' => 'app_espritapi_jsondetail', '_controller' => 'App\\Controller\\EspritApiController::Jsondetail'], ['id'], null, null, false, true, null]],
+        862 => [[['_route' => 'cart_add', '_controller' => 'App\\Controller\\OrderController::cart_add'], ['id'], null, null, false, true, null]],
+        885 => [[['_route' => 'cart_update', '_controller' => 'App\\Controller\\OrderController::cart_update'], ['id'], null, null, false, true, null]],
+        921 => [[['_route' => 'product_detail', '_controller' => 'App\\Controller\\ProductController::detail'], ['id'], null, null, false, true, null]],
+        944 => [
             [['_route' => 'product_filter_by_type', '_controller' => 'App\\Controller\\ProductController::filter_by_type'], ['type'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
