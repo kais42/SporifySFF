@@ -44,9 +44,25 @@ class EspritApiController extends AbstractController
         $evenements = $this->getDoctrine()
             ->getRepository(Event::class)
             ->findAll();
-        $serializer = new Serializer([new ObjectNormalizer()]);
-        $formatted = $serializer->normalize($evenements);
-        return new JsonResponse($formatted);
+        $jsonContent = null;
+        $i = 0;
+        $evenement = new Event();
+        foreach ($evenements as $event) {
+            $jsonContent[$i]['id'] = $event->getId();
+            $jsonContent[$i]['titre'] = $event->getTitre();
+            $jsonContent[$i]['description'] = $event->getDescription();
+            $jsonContent[$i]['image'] = $event->getImage();
+            $jsonContent[$i]['location'] = $event->getLocation();
+            $jsonContent[$i]['date_debut'] = $event->getDateDebut()->format('Y-m-d H:i:s');
+            $jsonContent[$i]['date_fin'] = $event->getDateFin()->format('Y-m-d H:i:s');
+
+
+            $i++;
+        }
+        $json = json_encode($jsonContent);
+        return new Response($json);
+
+
     }
 
 

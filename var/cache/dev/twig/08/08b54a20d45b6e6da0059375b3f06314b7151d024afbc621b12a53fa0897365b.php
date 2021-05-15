@@ -647,6 +647,6 @@ class __TwigTemplate_db96344c098b45b692952779c91f319b0728b641851461077dc4eaab875
   </div>
 </section>
 {% endblock %}
-", "pages/product/index.html.twig", "C:\\xampp\\htdocs\\integ1 (1)\\templates\\pages\\product\\index.html.twig");
+", "pages/product/index.html.twig", "C:\\xampp\\htdocs\\SporifySF\\templates\\pages\\product\\index.html.twig");
     }
 }

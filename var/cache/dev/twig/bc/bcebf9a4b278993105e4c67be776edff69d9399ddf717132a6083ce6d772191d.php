@@ -313,6 +313,6 @@ class __TwigTemplate_fd128c83fdde0295eb6a4a36001117e5161f3d656c18f07fbc6ffb78dee
 });
 </script>
 {% endblock %}
-", "pages/order/cart.html.twig", "C:\\xampp\\htdocs\\integ1 (1)\\templates\\pages\\order\\cart.html.twig");
+", "pages/order/cart.html.twig", "C:\\xampp\\htdocs\\SporifySF\\templates\\pages\\order\\cart.html.twig");
     }
 }
