@@ -127,14 +127,17 @@ return [
                         .'|delete/([^/]++)(*:789)'
                     .')'
                 .')'
-                .'|/espritApi/product/detail/([^/]++)(*:833)'
+                .'|/espritApi/(?'
+                    .'|product/detail/([^/]++)(*:836)'
+                    .'|commander([^/]++)/([^/]++)/([^/]++)(*:879)'
+                .')'
                 .'|/cart/(?'
-                    .'|add/([^/]++)(*:862)'
-                    .'|update/([^/]++)(*:885)'
+                    .'|add/([^/]++)(*:909)'
+                    .'|update/([^/]++)(*:932)'
                 .')'
                 .'|/product/(?'
-                    .'|detail/([^/]++)(*:921)'
-                    .'|filter/([^/]++)(*:944)'
+                    .'|detail/([^/]++)(*:968)'
+                    .'|filter/([^/]++)(*:991)'
                 .')'
             .')/?$}sD',
     ],
@@ -170,11 +173,12 @@ return [
         743 => [[['_route' => 'admin_product_edit', '_controller' => 'App\\Controller\\ProductController::admin_edit'], ['id'], null, null, false, true, null]],
         766 => [[['_route' => 'admin_product_update', '_controller' => 'App\\Controller\\ProductController::admin_update'], ['id'], null, null, false, true, null]],
         789 => [[['_route' => 'admin_product_delete', '_controller' => 'App\\Controller\\ProductController::admin_delete'], ['id'], null, null, false, true, null]],
-        833 => [[['_route' => 'app_espritapi_jsondetail', '_controller' => 'App\\Controller\\EspritApiController::Jsondetail'], ['id'], null, null, false, true, null]],
-        862 => [[['_route' => 'cart_add', '_controller' => 'App\\Controller\\OrderController::cart_add'], ['id'], null, null, false, true, null]],
-        885 => [[['_route' => 'cart_update', '_controller' => 'App\\Controller\\OrderController::cart_update'], ['id'], null, null, false, true, null]],
-        921 => [[['_route' => 'product_detail', '_controller' => 'App\\Controller\\ProductController::detail'], ['id'], null, null, false, true, null]],
-        944 => [
+        836 => [[['_route' => 'app_espritapi_jsondetail', '_controller' => 'App\\Controller\\EspritApiController::Jsondetail'], ['id'], null, null, false, true, null]],
+        879 => [[['_route' => 'app_espritapi_commander', '_controller' => 'App\\Controller\\EspritApiController::commander'], ['id', 'idprod', 'q'], null, null, false, true, null]],
+        909 => [[['_route' => 'cart_add', '_controller' => 'App\\Controller\\OrderController::cart_add'], ['id'], null, null, false, true, null]],
+        932 => [[['_route' => 'cart_update', '_controller' => 'App\\Controller\\OrderController::cart_update'], ['id'], null, null, false, true, null]],
+        968 => [[['_route' => 'product_detail', '_controller' => 'App\\Controller\\ProductController::detail'], ['id'], null, null, false, true, null]],
+        991 => [
             [['_route' => 'product_filter_by_type', '_controller' => 'App\\Controller\\ProductController::filter_by_type'], ['type'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

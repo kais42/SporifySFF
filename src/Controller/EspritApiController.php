@@ -8,6 +8,7 @@ use App\Entity\Order;
 use App\Entity\Product;
 use App\Entity\Promotion;
 use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -188,6 +189,18 @@ class EspritApiController extends AbstractController
         return new Response($json);
 
     }
-
+    /**
+     * @Route("/commander{id}/{idprod}/{q}")
+     */
+    public function commander(Request $request,$idprod, $id,$q): Response {
+      $doct = $this->getDoctrine()->getManager();
+        $cart = new Cart();
+        $cart->setProductId($idprod);
+        $cart->setUserId($id);
+        $cart->setQuantity($q);
+        $doct->persist($cart);
+        $doct->flush();
+        return $this->redirectToRoute('product');
+    }
 
 }

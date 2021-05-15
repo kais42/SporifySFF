@@ -34,6 +34,7 @@ return [
     'app_espritapi_allpromotions' => [[], ['_controller' => 'App\\Controller\\EspritApiController::allPromotions'], [], [['text', '/espritApi/allPromotions']], [], []],
     'app_espritapi_jsondetail' => [['id'], ['_controller' => 'App\\Controller\\EspritApiController::Jsondetail'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/espritApi/product/detail']], [], []],
     'app_espritapi_checkoutjson' => [[], ['_controller' => 'App\\Controller\\EspritApiController::checkoutJson'], [], [['text', '/espritApi/checkoutJson']], [], []],
+    'app_espritapi_commander' => [['id', 'idprod', 'q'], ['_controller' => 'App\\Controller\\EspritApiController::commander'], [], [['variable', '/', '[^/]++', 'q'], ['variable', '/', '[^/]++', 'idprod'], ['variable', '', '[^/]++', 'id'], ['text', '/espritApi/commander']], [], []],
     'admin_events' => [[], ['_controller' => 'App\\Controller\\EventController::eventList'], [], [['text', '/admin/events']], [], []],
     'tri_event' => [[], ['_controller' => 'App\\Controller\\EventController::triEvent'], [], [['text', '/admin/tri-event']], [], []],
     'search' => [[], ['_controller' => 'App\\Controller\\EventController::search'], [], [['text', '/admin/search']], [], []],
