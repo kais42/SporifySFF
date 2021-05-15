@@ -4,18 +4,23 @@ namespace App\Controller;
 
 use App\Entity\Cart;
 use App\Entity\Event;
+use App\Entity\Order;
 use App\Entity\Product;
 use App\Entity\Promotion;
+use App\Entity\User;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
+
 /**
  * @Route("/espritApi")
  */
@@ -44,9 +49,25 @@ class EspritApiController extends AbstractController
         $evenements = $this->getDoctrine()
             ->getRepository(Event::class)
             ->findAll();
-        $serializer = new Serializer([new ObjectNormalizer()]);
-        $formatted = $serializer->normalize($evenements);
-        return new JsonResponse($formatted);
+        $jsonContent = null;
+        $i = 0;
+        $evenement = new Event();
+        foreach ($evenements as $event) {
+            $jsonContent[$i]['id'] = $event->getId();
+            $jsonContent[$i]['titre'] = $event->getTitre();
+            $jsonContent[$i]['description'] = $event->getDescription();
+            $jsonContent[$i]['image'] = $event->getImage();
+            $jsonContent[$i]['location'] = $event->getLocation();
+            $jsonContent[$i]['date_debut'] = $event->getDateDebut()->format('Y-m-d H:i:s');
+            $jsonContent[$i]['date_fin'] = $event->getDateFin()->format('Y-m-d H:i:s');
+
+
+            $i++;
+        }
+        $json = json_encode($jsonContent);
+        return new Response($json);
+
+
     }
 
 
@@ -107,9 +128,16 @@ class EspritApiController extends AbstractController
         $promotions = $this->getDoctrine()->getRepository(Promotion::class)->findAll();
         $jsonContent = null;
         $i = 0;
-        $product = new Product();
+        $promotion = new Promotion();
         foreach ($promotions as $promotion) {
+            $jsonContent[$i]['id'] = $promotion->getId();
+            $jsonContent[$i]['titre'] = $promotion->getTitre();
             $jsonContent[$i]['pourcentage'] = $promotion->getPourcentage();
+            $jsonContent[$i]['description'] = $promotion->getDescription();
+            $jsonContent[$i]['typeProduit'] = $promotion->getTypeProduit();
+            $jsonContent[$i]['date_debut'] = $promotion->getDateDebut()->format('Y-m-d H:i:s');
+            $jsonContent[$i]['date_fin'] = $promotion->getDateFin()->format('Y-m-d H:i:s');
+
             $i++;
         }
         $json = json_encode($jsonContent);
@@ -141,10 +169,10 @@ class EspritApiController extends AbstractController
 
         $doct = $this->getDoctrine()->getManager();
         $carts = $doct->getRepository(Cart::class)->findAll();
-        $promotions = $this->getDoctrine()->getRepository(Promotion::class)->findAll();
+      //  $promotions = $this->getDoctrine()->getRepository(Promotion::class)->findAll();
         $i = 0;
         $cart = new Cart();
-        $promotion = new Promotion();
+        //$promotion = new Promotion();
         foreach ($carts as $cart) {
             $jsonContent[$i]['id'] = $cart->getId();
             $jsonContent[$i]['quantity'] = $cart->getQuantity() ;
@@ -152,15 +180,14 @@ class EspritApiController extends AbstractController
 
             $i++;
         }
-        foreach ($promotions as $promotion) {
+      /*  foreach ($promotions as $promotion) {
             $jsonContent[$i]['pourcentage'] = $promotion->getPourcentage();
             $i++;
-        }
+        }*/
         $json = json_encode($jsonContent);
         return new Response($json);
 
     }
-
 
 
 }

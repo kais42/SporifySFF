@@ -1,32 +1,6 @@
 <?php
 
 return [
-<<<<<<< HEAD:var/cache/dev/ContainerVjKVLIN/removed-ids.php
-    '.1_DoctrineProvider~QLeNk4x' => true,
-    '.1_LegacyRouteLoaderContainer~1H34IAd' => true,
-    '.1_NativeFileSessionHandler~_fBfP5w' => true,
-    '.1_NonceGenerator~Kew5gw8' => true,
-    '.1_ResolvedFormTypeFactory~1A5Rnek' => true,
-    '.1_ServiceLocator~jzJYTGg' => true,
-    '.1_SourceContextProvider~bytsGnD' => true,
-    '.1_Swift_Transport_Esmtp_Auth_CramMd5Authenticator~RV4nI_D' => true,
-    '.1_~19hmNX7' => true,
-    '.1_~GLVSY_K' => true,
-    '.1_~mc._aM0' => true,
-    '.2_ArrayAdapter~QLeNk4x' => true,
-    '.2_HtmlDumper~Kew5gw8' => true,
-    '.2_SourceContextProvider~bytsGnD' => true,
-    '.2_Swift_Transport_Esmtp_Auth_LoginAuthenticator~RV4nI_D' => true,
-    '.2_~19hmNX7' => true,
-    '.2_~mc._aM0' => true,
-    '.3_PhpArrayAdapter~QLeNk4x' => true,
-    '.3_RequestContextProvider~bytsGnD' => true,
-    '.3_Swift_Transport_Esmtp_Auth_PlainAuthenticator~RV4nI_D' => true,
-    '.4_CliContextProvider~bytsGnD' => true,
-    '.4_Swift_Transport_Esmtp_Auth_NTLMAuthenticator~RV4nI_D' => true,
-    '.5_CliDescriptor~bytsGnD' => true,
-    '.6_HtmlDescriptor~bytsGnD' => true,
-=======
     '.1_DoctrineProvider~e6zb2ZL' => true,
     '.1_LegacyRouteLoaderContainer~f7yy0eu' => true,
     '.1_NativeFileSessionHandler~HoXbBsZ' => true,
@@ -51,7 +25,6 @@ return [
     '.4_Swift_Transport_Esmtp_Auth_NTLMAuthenticator~PWDkyk3' => true,
     '.5_CliDescriptor~D26uRS1' => true,
     '.6_HtmlDescriptor~D26uRS1' => true,
->>>>>>> 55744abfa7658b3b38850710e11eec8d2c809a1d:var/cache/dev/ContainerIfUWlPJ/removed-ids.php
     '.abstract.instanceof.App\\Controller\\CoachController' => true,
     '.abstract.instanceof.App\\Controller\\CoursController' => true,
     '.abstract.instanceof.App\\Controller\\EspritApiController' => true,
