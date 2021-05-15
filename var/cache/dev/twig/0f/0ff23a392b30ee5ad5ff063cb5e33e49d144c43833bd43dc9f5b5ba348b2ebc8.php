@@ -629,6 +629,6 @@ class __TwigTemplate_68442132f4b147b7066d8943c1e2f3160e0d527cc2a6028ba6cee65a1b3
       </div>
     </div>
   </nav>
-</header>", "layout/header.html.twig", "E:\\WorkSpace\\task\\web\\symfony\\Anas S\\integ1\\templates\\layout\\header.html.twig");
+</header>", "layout/header.html.twig", "C:\\xampp\\htdocs\\SporifySF\\templates\\layout\\header.html.twig");
     }
 }

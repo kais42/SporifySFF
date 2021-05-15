@@ -292,6 +292,6 @@ class __TwigTemplate_5d94d31f8bdc03c63d2529609f69948b2f3e71310896987c1200ea3c3eb
   
   {% block javascripts %}{% endblock %}
 </body>
-</html>", "layout/index.html.twig", "E:\\WorkSpace\\task\\web\\symfony\\Anas S\\integ1\\templates\\layout\\index.html.twig");
+</html>", "layout/index.html.twig", "C:\\xampp\\htdocs\\SporifySF\\templates\\layout\\index.html.twig");
     }
 }

@@ -306,6 +306,6 @@ class __TwigTemplate_3f5075bd4a67c044effe17da21f7f999e8857e97be6c9d906f0cf96887d
       </div>
     </div>
   </div>
-</footer>", "layout/footer.html.twig", "E:\\WorkSpace\\task\\web\\symfony\\Anas S\\integ1\\templates\\layout\\footer.html.twig");
+</footer>", "layout/footer.html.twig", "C:\\xampp\\htdocs\\SporifySF\\templates\\layout\\footer.html.twig");
     }
 }
